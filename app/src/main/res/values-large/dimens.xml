@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="size_label">44sp</dimen>
+    <dimen name="size_data">90sp</dimen>
+
+    <!-- graphText min 6.0 et max 24.0 -->
+    <item name="graphText" format="float" type="dimen">24.0</item>
+</resources>

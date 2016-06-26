@@ -1,0 +1,194 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@android:color/white"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutAirTemp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:text="TEMP AIR"
+                android:id="@+id/textViewAirTempLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewAirTemp"
+                android:textSize="@dimen/size_data"
+                style="@style/Font"
+                android:layout_gravity="bottom|right" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutBaro"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:text="BARO"
+                android:id="@+id/textViewBaroLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:id="@+id/textViewBaro"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                android:text="---"
+                style="@style/Font" />
+        </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutTempEau"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="TEMP EAU"
+                android:id="@+id/textViewTempEauLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewTempEau"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutProf"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="PROF"
+                android:id="@+id/textViewProfLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewProf"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+        </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutLochJour"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="LOCH JOUR"
+                android:id="@+id/textViewLochJourLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewLochJour"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutLochTot"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="LOCH TOT"
+                android:id="@+id/textViewLochTotLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewLochTot"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+        </FrameLayout>
+
+    </TableRow>
+
+</TableLayout>

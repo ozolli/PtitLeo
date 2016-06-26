@@ -1,0 +1,10 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="size_label">28sp</dimen>
+    <dimen name="size_data">60sp</dimen>
+
+    <!-- graphText min 6.0 et max 24.0 -->
+    <item name="graphText" format="float" type="dimen">14.0</item>
+</resources>

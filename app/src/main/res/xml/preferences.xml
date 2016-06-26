@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:title="Port serveur UDP"
+        android:key="udpPort"
+        android:summary="Le numéro de port UDP du serveur wifi NMEA (par défaut 10110)"
+        android:defaultValue="10110"
+        android:numeric="integer"
+        android:maxLength="5" />
+    <CheckBoxPreference
+        android:title="Activer graphiques"
+        android:defaultValue="false"
+        android:summary="Si cette option est sélectionnée les statistiques graphiques sont activées."
+        android:key="enableGraph" />
+    <CheckBoxPreference
+        android:title="Désactiver veille"
+        android:defaultValue="false"
+        android:summary="Si cette option est sélectionnée l'écran ne se mettra pas en veille."
+        android:key="disableSleep" />
+    <CheckBoxPreference
+        android:title="Thème blanc"
+        android:defaultValue="false"
+        android:summary="Si cette option est sélectionnée le texte est noir sur fond blanc."
+        android:key="themeLight" />
+</PreferenceScreen>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">P\'tit Léo</string>
+
+    <string name="title_section1">Perf</string>
+    <string name="title_section2">GPS</string>
+    <string name="title_section3">Log</string>
+    <string name="action_record">Rec</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

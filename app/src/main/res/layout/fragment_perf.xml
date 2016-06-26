@@ -1,0 +1,279 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@android:color/white"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutBSP"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:text="BSP"
+            android:id="@+id/textViewBSPLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewBSP"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutCible"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:text="CIBLE"
+            android:id="@+id/textViewCibleLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:id="@+id/textViewCible"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            android:text="---"
+            style="@style/Font" />
+    </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutTWA"
+        android:layout_weight="1"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="TWA"
+            android:id="@+id/textViewTWALabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewTWA"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutDOptVMG"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="° OPT VMG"
+            android:id="@+id/textViewDOptVMGLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewDOptVMG"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+    </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutTWS"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="TWS"
+            android:id="@+id/textViewTWSLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewTWS"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewTWSavg10mn"
+            android:layout_gravity="right|top"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutTWD"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="TWD"
+            android:id="@+id/textViewTWDLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewTWD"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewTWDavg10mn"
+            android:layout_gravity="right|top"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+    </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutPOptVMG"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="% OPT VMG"
+            android:id="@+id/textViewPOptVMGLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewPOptVMG"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_rayon"
+        android:id="@+id/frameLayoutHDM"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="HDM"
+            android:id="@+id/textViewHDMLabel"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewHDM"
+            android:textSize="@dimen/size_data"
+            android:layout_gravity="bottom|right"
+            style="@style/Font" />
+
+        <TextView
+            android:text="---"
+            android:id="@+id/textViewCapab"
+            android:layout_gravity="right|top"
+            android:textSize="@dimen/size_label"
+            style="@style/Font" />
+    </FrameLayout>
+
+    </TableRow>
+
+</TableLayout>

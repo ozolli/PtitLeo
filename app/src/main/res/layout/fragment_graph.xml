@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:background="@drawable/rect_rayon"
+        android:layout_marginTop="0dp"
+        android:id="@+id/frameLayoutTWSh">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartTWS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:id="@+id/frameLayoutTWDh"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_rayon">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartTWD"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:id="@+id/frameLayoutBAROh"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_rayon">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartBARO"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</LinearLayout>
