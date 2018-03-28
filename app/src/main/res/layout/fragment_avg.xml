@@ -146,6 +146,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="0dp"
             android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp">
 
             <TextView
@@ -173,6 +174,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="0dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp">
 
             <TextView
@@ -184,6 +186,67 @@
             <TextView
                 android:text="---"
                 android:id="@+id/textViewLochTot"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+        </FrameLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_height = "0dp"
+        android:layout_weight = "1"
+        android:layout_width="0dp">
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutPitch"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="TANGAGE"
+                android:id="@+id/textViewPitchLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewPitch"
+                android:textSize="@dimen/size_data"
+                android:layout_gravity="bottom|right"
+                style="@style/Font" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_rayon"
+            android:id="@+id/frameLayoutGite"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="GITE"
+                android:id="@+id/textViewGiteLabel"
+                android:textSize="@dimen/size_label"
+                style="@style/Font" />
+
+            <TextView
+                android:text="---"
+                android:id="@+id/textViewGite"
                 android:textSize="@dimen/size_data"
                 android:layout_gravity="bottom|right"
                 style="@style/Font" />

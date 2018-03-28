@@ -76,11 +76,11 @@ public class MainActivity extends ActionBarActivity {
     private static TextView cible, twa, tws, bsp, hdg, capab, twd, dopt, popt, twdavg10, twsavg10;
     private static String mcible, mtwa, mtws, mbsp, mhdg, mcapab, mtwd, mdopt, mpopt, mtwdavg10, mtwsavg10;
     // fragment_gps
-    private static TextView cog, sog, pitch, heel, set, drift, hdop, sat, awa, aws;
-    private static String mcog, msog, mpitch, mheel, mset, mdrift, mhdop, msat, mawa, maws;
+    private static TextView cog, sog, set, drift, stddev, sat, awa, aws, capwp, distwp, vmc, nomwp;
+    private static String mcog, msog, mset, mdrift, mstddev, msat, mawa, maws, mcapwp, mdistwp, mvmc, mnomwp;
     // fragment_avg
-    private static TextView baro, airtemp, depth, watertemp, dayloch, totalloch;
-    private static String mbaro, mairtemp, mdepth, mwatertemp, mdayloch, mtotalloch;
+    private static TextView baro, airtemp, depth, watertemp, dayloch, totalloch, pitch, heel;
+    private static String mbaro, mairtemp, mdepth, mwatertemp, mdayloch, mtotalloch, mpitch, mheel;
     // fragment_graph
     private static LineChart mChartTWS, mChartTWD, mChartBARO;
     private static YAxis leftAxisTWS, leftAxisTWD, leftAxisBARO;
@@ -191,7 +191,7 @@ public class MainActivity extends ActionBarActivity {
                         if(heel != null) heel.setText(mheel);
                         if(set != null) set.setText(mset);
                         if(drift != null) drift.setText(mdrift);
-                        if(hdop != null) hdop.setText(mhdop);
+                        if(stddev != null) stddev.setText(mstddev);
                         if(sat != null) sat.setText(msat);
                         if(awa != null) awa.setText(mawa);
                         if(aws != null) aws.setText(maws);
@@ -201,6 +201,10 @@ public class MainActivity extends ActionBarActivity {
                         if(watertemp != null) watertemp.setText(mwatertemp);
                         if(dayloch != null) dayloch.setText(mdayloch);
                         if(totalloch != null) totalloch.setText(mtotalloch);
+                        if(capwp != null) capwp.setText(mcapwp);
+                        if(distwp != null) distwp.setText(mdistwp);
+                        if(vmc != null) vmc.setText(mvmc);
+                        if(nomwp != null) nomwp.setText(mnomwp);
                     }
                 });
             }
@@ -397,11 +401,13 @@ public class MainActivity extends ActionBarActivity {
             sog = (TextView) gpsView.findViewById(R.id.textViewSOG);
             set = (TextView) gpsView.findViewById(R.id.textViewSET);
             drift = (TextView) gpsView.findViewById(R.id.textViewDRIFT);
+            capwp = (TextView) gpsView.findViewById(R.id.textViewCapWP);
+            distwp = (TextView) gpsView.findViewById(R.id.textViewDistWP);
+            vmc = (TextView) gpsView.findViewById(R.id.textViewVMC);
+            nomwp = (TextView) gpsView.findViewById(R.id.textViewNomWPLabel);
             awa = (TextView) gpsView.findViewById(R.id.textViewAWA);
             aws = (TextView) gpsView.findViewById(R.id.textViewAWS);
-            pitch = (TextView) gpsView.findViewById(R.id.textViewPitch);
-            heel = (TextView) gpsView.findViewById(R.id.textViewGite);
-            hdop = (TextView) gpsView.findViewById(R.id.textViewHDOP);
+            stddev = (TextView) gpsView.findViewById(R.id.textViewStdDev);
             sat = (TextView) gpsView.findViewById(R.id.textViewSat);
             return gpsView;
         }
@@ -431,6 +437,8 @@ public class MainActivity extends ActionBarActivity {
             depth = (TextView) avgView.findViewById(R.id.textViewProf);
             dayloch = (TextView) avgView.findViewById(R.id.textViewLochJour);
             totalloch = (TextView) avgView.findViewById(R.id.textViewLochTot);
+            pitch = (TextView) avgView.findViewById(R.id.textViewPitch);
+            heel = (TextView) avgView.findViewById(R.id.textViewGite);
             return avgView;
         }
     }
@@ -749,7 +757,7 @@ public class MainActivity extends ActionBarActivity {
         // Traitement d'un paquet UDP reçu
         private void parseNMEA(String str) {
 
-            int hdopStyle = Typeface.NORMAL;
+            int stddevStyle = Typeface.NORMAL;
 
             // Découpe un paquet UDP en phrases uniques
             List<String> sentences = Arrays.asList(str.split("\\r?\\n"));
@@ -770,7 +778,7 @@ public class MainActivity extends ActionBarActivity {
                 String ID = items.get(0).substring(3, 6);
 
                 if (ID.equals("HDM")) {
-                    mhdg = ent(items.get(1)) + "°";
+                    mhdg = ent(items.get(1));
 
                 } else if (ID.equals("VHW")) {
                     mbsp = items.get(5);
@@ -796,57 +804,54 @@ public class MainActivity extends ActionBarActivity {
                     final String twds = items.get(3);
                     final float twds10mn = twd10mn.update(twds);
                     if (bGraph) addGraphEntry(mChartTWD, leftAxisTWD, twds, twds10mn, 600);
-                    mtwd = ent(twds) + "°";
-                    mtwdavg10 = ent(String.valueOf(twds10mn)) + "°";
+                    mtwd = ent(twds);
+                    mtwdavg10 = ent(String.valueOf(twds10mn));
 
                 } else if (ID.equals("XDR")) {
                     if (Objects.equals(items.get(4), "Heel")) {
-                        mheel = abs(ent(items.get(2))) + "°";
+                        mheel = abs(ent(items.get(2))) ;
                     } else if (Objects.equals(items.get(4), "Pitch")) {
-                        mpitch = abs(ent(items.get(2))) + "°";
+                        mpitch = abs(ent(items.get(2)));
+                    } else if (Objects.equals(items.get(4), "AirTemp")) {
+                        mairtemp = items.get(2);
+                    } else if (Objects.equals(items.get(4), "Barometer")) {// Toutes les 15 secondes on met à jour le graphique
+                        if (b == 15) {
+                            // baros contient la pression au 10ème de mbar
+                            Double d = Double.parseDouble(items.get(2)) * 10000;
+                            long l = Math.round(d);
+                            d = (double) l / 10;
+                            final String baros = String.valueOf(d);
+                            final float baros12h = baro12h.update(baros);
+                            if (bGraph) addGraphEntry(mChartBARO, leftAxisBARO, baros, baros12h, 2880);
+                            b = 0;
+                        }
+                        b++;
+                        mbaro = bar2mbar(items.get(2));
                     }
 
                 } else if (ID.equals("RMC")) {// Fix valide = A
                     if (Objects.equals(items.get(2), "A")) {
                         msog = items.get(7);
-                        mcog = ent(items.get(8)) + "°";
+                        mcog = ent(items.get(8));
                     }
 
                 } else if (ID.equals("GGA")) {// Qualité : 1 = GPS, 2 = DGPS
-                    mhdop = items.get(8);
                     msat = items.get(7);
                     if (Objects.equals(items.get(6), "1")) {
-                        if (hdopStyle == Typeface.NORMAL) {
-                            UpdateCellStyle(hdop, Typeface.ITALIC);
-                            hdopStyle = Typeface.ITALIC;
+                        if (stddevStyle == Typeface.NORMAL) {
+                            UpdateCellStyle(stddev, Typeface.ITALIC);
+                            stddevStyle = Typeface.ITALIC;
                         }
                     } else if (Objects.equals(items.get(6), "2")) {
-                        if (hdopStyle == Typeface.ITALIC) {
-                            UpdateCellStyle(hdop, Typeface.NORMAL);
-                            hdopStyle = Typeface.NORMAL;
+                        if (stddevStyle == Typeface.ITALIC) {
+                            UpdateCellStyle(stddev, Typeface.NORMAL);
+                            stddevStyle = Typeface.NORMAL;
                         }
                     }
 
                 } else if (ID.equals("VDR")) {
                     mdrift = items.get(5);
-                    mset = ent(items.get(3)) + "°";
-
-                } else if (ID.equals("MMB")) {// Toutes les 15 secondes on met à jour le graphique
-                    if (b == 15) {
-                        // baros contient la pression au 10ème de mbar
-                        Double d = Double.parseDouble(items.get(3)) * 10000;
-                        long l = Math.round(d);
-                        d = (double) l / 10;
-                        final String baros = String.valueOf(d);
-                        final float baros12h = baro12h.update(baros);
-                        if (bGraph) addGraphEntry(mChartBARO, leftAxisBARO, baros, baros12h, 2880);
-                        b = 0;
-                    }
-                    b++;
-                    mbaro = bar2mbar(items.get(3));
-
-                } else if (ID.equals("MTA")) {
-                    mairtemp = items.get(1);
+                    mset = ent(items.get(3));
 
                 } else if (ID.equals("MTW")) {
                     mwatertemp = items.get(1);
@@ -856,13 +861,24 @@ public class MainActivity extends ActionBarActivity {
 
                 } else if (ID.equals("ZPE")) {
                     mcible = items.get(1);
-                    mcapab = ent(items.get(2)) + "°";
+                    mcapab = ent(items.get(2));
                     mdopt = items.get(3);
                     final int opt = Integer.parseInt(items.get(3));
                     if (opt < 90)
                         mpopt = items.get(4);
                     else if (opt >= 90)
                         mpopt = items.get(5);
+
+                } else if (ID.equals("RMB")) {
+                    mdistwp = items.get(10);
+                    mcapwp = ent(items.get(11));
+                    mvmc = items.get(12);
+                    mnomwp = "CAP " + items.get(4).substring(0, 4);
+
+                } else if (ID.equals("GST")) {
+                    Double lat = Double.parseDouble(items.get(6));
+                    Double lon = Double.parseDouble(items.get(7));
+                    mstddev = String.valueOf(roundTwoDecimals((float) Math.sqrt(lat*lat + lon*lon))) + "m";
 
                 }
             }
@@ -876,8 +892,8 @@ public class MainActivity extends ActionBarActivity {
 
         // Calcule le TWA ou AWA. Retourne une String entière
         private String getwa(String v) {
-            if (str2double(v) < 180) return ent(v) + "°<";
-            else return ">" + String.valueOf(Math.round(360 - str2double(v))) + "°";
+            if (str2double(v) < 180) return ent(v) + "<";
+            else return ">" + String.valueOf(Math.round(360 - str2double(v)));
         }
 
         // Retourne une String entière en double
